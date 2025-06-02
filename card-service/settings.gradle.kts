@@ -1,1 +1,1 @@
-rootProject.name = "dragoneclipse"
+rootProject.name = "card-service"
