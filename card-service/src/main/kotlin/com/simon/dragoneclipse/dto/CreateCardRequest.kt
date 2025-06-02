@@ -2,7 +2,7 @@ package com.simon.dragoneclipse.dto
 
 import com.simon.dragoneclipse.model.CardRarity
 import com.simon.dragoneclipse.model.CardType
-import com.simon.dragoneclipse.model.Mystling
+import com.simon.dragoneclipse.model.mystling.Mystling
 
 data class CreateCardRequest(
     val name: String,
@@ -10,6 +10,6 @@ data class CreateCardRequest(
     val type: CardType = CardType.NEUTRAL,
     val passive: String? = null,
     val upgrade: String? = null,
-    val mystlingName: Mystling? = null,
+    val mystlingName: String? = null,
     val rarity: CardRarity = CardRarity.COMMON
 )

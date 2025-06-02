@@ -1,5 +1,6 @@
-cpackage com.simon.dragoneclipse.model
+package com.simon.dragoneclipse.model
 
+import com.simon.dragoneclipse.model.mystling.Mystling
 import jakarta.persistence.*
 
 @Entity

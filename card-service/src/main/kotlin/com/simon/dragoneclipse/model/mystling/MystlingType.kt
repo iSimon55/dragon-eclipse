@@ -1,4 +1,4 @@
-package com.simon.dragoneclipse.model
+package com.simon.dragoneclipse.model.mystling
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
@@ -7,11 +7,14 @@ import jakarta.persistence.*
 data class MystlingType (
 
     @Id
-    val name: String,
+    @Enumerated(EnumType.STRING)
+    val name: MystlingTypeName,
 
     @OneToMany(mappedBy = "type")
     @JsonIgnore
     val mystlings: List<Mystling> = listOf(),
+
+    val skillName: String,
 
     val cost: Int,
 

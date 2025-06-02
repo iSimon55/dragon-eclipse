@@ -2,9 +2,8 @@ package com.simon.dragoneclipse.model
 
 enum class CardRarity {
     COMMON,
-    UNCOMMON,
     RARE,
-    EPIC,
+    ULTRA_RARE,
     LEGENDARY,
     MYSTLING
 }

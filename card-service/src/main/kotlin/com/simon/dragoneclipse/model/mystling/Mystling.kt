@@ -1,6 +1,7 @@
-package com.simon.dragoneclipse.model
+package com.simon.dragoneclipse.model.mystling
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import com.simon.dragoneclipse.model.Card
 import jakarta.persistence.*
 
 @Entity
@@ -13,12 +14,16 @@ data class Mystling(
     val type: MystlingType,
 
     @OneToMany(mappedBy = "mystling", cascade = [CascadeType.ALL])
+    val subType: List<SubType>? = null,
+
+    @OneToMany(mappedBy = "mystling", cascade = [CascadeType.ALL])
     val specialAbility: List<MystlingSpecialAbility>,
 
     @OneToMany(mappedBy = "mystlingName", cascade = [CascadeType.ALL])
     @JsonIgnore
     val cards: List<Card>,
 
+    val tokens: Int = 0,
     // PvE stats
     val hp: Int,
 
@@ -28,7 +33,7 @@ data class Mystling(
 
     val defense: Int,
 
-    val specialdefense: Int,
+    val specialDefense: Int,
 
     // PvP stats
     val hpPvP: Int,
@@ -39,5 +44,5 @@ data class Mystling(
 
     val defensePvP: Int,
 
-    val specialdefensePvP: Int
+    val specialDefensePvP: Int
 )

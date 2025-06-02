@@ -15,7 +15,13 @@ class DeckService(
 ) {
 
     fun createDeck(request: CreateDeckRequest): Deck {
+
+        if(request.cardIds.size != 16){
+            throw IllegalArgumentException("Invalid number of cards")
+        }
+
         val cards = cardRepository.findAllById(request.cardIds)
+
         val mystling = mystlingRepository.findById(request.mystlingName)
             .orElseThrow { IllegalArgumentException("Mystling not found") }
 

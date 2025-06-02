@@ -1,4 +1,4 @@
-package com.simon.dragoneclipse.model
+package com.simon.dragoneclipse.model.mystling
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
