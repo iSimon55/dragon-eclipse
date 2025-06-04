@@ -25,4 +25,6 @@ data class Card(
     @ManyToOne
     @JoinColumn(name = "mystling_name")
     val mystlingName: Mystling? = null
+
+
 )
