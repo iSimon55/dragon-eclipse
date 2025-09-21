@@ -1,8 +1,8 @@
 package com.simon.dragoneclipse.game_service.model.Board
 
 data class HexField(
-    val q: Int,
-    val r: Int,
+    val x: Int,
+    val y: Int,
     val specialSymbol: SpecialSymbol? = null
 )
 

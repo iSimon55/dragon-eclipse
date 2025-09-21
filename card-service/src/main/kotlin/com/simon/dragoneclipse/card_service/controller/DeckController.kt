@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/decks")
 class DeckController(private val deckService: DeckService) {
 
+    @GetMapping("/{name}")
+    fun getDeckByName(@PathVariable name: String): ResponseEntity<Deck> {
+        return ResponseEntity.status(HttpStatus.OK).body(deckService.getDeckByName(name))
+    }
+
     @PostMapping
     fun createDeck(@RequestBody request: CreateDeckRequest): ResponseEntity<Deck> {
         val savedDeck = deckService.createDeck(request)

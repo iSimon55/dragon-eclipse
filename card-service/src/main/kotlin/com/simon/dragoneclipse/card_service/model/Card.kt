@@ -1,5 +1,6 @@
 package com.simon.dragoneclipse.card_service.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.simon.dragoneclipse.card_service.model.mystling.Mystling
 import jakarta.persistence.*
 
@@ -24,6 +25,7 @@ data class Card(
 
     @ManyToOne
     @JoinColumn(name = "mystling_name")
+    @JsonIgnore
     val mystlingName: Mystling? = null
 
 

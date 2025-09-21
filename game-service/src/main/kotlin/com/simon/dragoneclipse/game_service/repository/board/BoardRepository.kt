@@ -1,8 +1,8 @@
-package com.simon.dragoneclipse.game_service.repository
+package com.simon.dragoneclipse.game_service.repository.board
 
 import com.simon.dragoneclipse.game_service.model.Board.Board
 import org.springframework.data.mongodb.repository.MongoRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface BoardRepository: MongoRepository<Board, String>
+interface BoardRepository: MongoRepository<Board, String>, BoardRepositoryCustom

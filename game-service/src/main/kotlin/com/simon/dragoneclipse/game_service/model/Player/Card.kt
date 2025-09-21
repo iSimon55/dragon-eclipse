@@ -8,6 +8,7 @@ data class Card(
     val passive: String? = null,
     val upgrade: String? = null,
     val rarity: CardRarity,
+    //val mystlingName: Mystling? = null
     //val range: Int? = null,
     //val cost: Int = 0
 )

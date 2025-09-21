@@ -1,7 +1,9 @@
 package com.simon.dragoneclipse.game_service.service
 
 import com.simon.dragoneclipse.game_service.model.Board.Board
-import com.simon.dragoneclipse.game_service.repository.BoardRepository
+import com.simon.dragoneclipse.game_service.model.Board.HexField
+import com.simon.dragoneclipse.game_service.model.Board.SpecialSymbol
+import com.simon.dragoneclipse.game_service.repository.board.BoardRepository
 import org.springframework.stereotype.Service
 
 @Service
@@ -13,9 +15,9 @@ class BoardService(
         return boardRepository.save(board)
     }
 
-    fun getBoardById(id: String): Board {
-        return boardRepository.findById(id)
-            .orElseThrow { IllegalArgumentException("Board not found: $id") }
+    fun getBoardByName(name: String): Board {
+        return boardRepository.findById(name)
+            .orElseThrow { IllegalArgumentException("Board not found: $name") }
     }
 
     fun updateBoard(board: Board): Board {
@@ -27,4 +29,6 @@ class BoardService(
     }
 
     fun getAllBoards(): List<Board> = boardRepository.findAll()
+
+    fun getFieldWithSpecialSymbol(boardName: String, symbol: SpecialSymbol): HexField = boardRepository.findFieldWithSpecialSymbol(boardName, symbol)
 }

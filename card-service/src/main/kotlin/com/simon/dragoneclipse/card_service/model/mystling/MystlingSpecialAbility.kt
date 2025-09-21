@@ -1,7 +1,10 @@
 package com.simon.dragoneclipse.card_service.model.mystling
 
 import com.fasterxml.jackson.annotation.JsonIgnore
-import jakarta.persistence.*
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.ManyToOne
 
 @Entity
 data class MystlingSpecialAbility(

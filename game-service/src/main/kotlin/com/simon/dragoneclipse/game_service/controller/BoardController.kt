@@ -6,18 +6,19 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/boards")
+@CrossOrigin(origins = arrayOf("http://localhost:3000"))
 class BoardController(
     private val boardService: BoardService
 ) {
 
     @PostMapping
-    fun createBoard(@RequestBody Board: Board): Board = boardService.createBoard(Board)
+    fun createBoard(@RequestBody board: Board): Board = boardService.createBoard(board)
 
-    @GetMapping("/{id}")
-    fun getBoard(@PathVariable id: String): Board = boardService.getBoardById(id)
+    @GetMapping("/{name}")
+    fun getBoard(@PathVariable name: String): Board = boardService.getBoardByName(name)
 
     @PutMapping
-    fun updateBoard(@RequestBody Board: Board): Board = boardService.updateBoard(Board)
+    fun updateBoard(@RequestBody board: Board): Board = boardService.updateBoard(board)
 
     @DeleteMapping("/{id}")
     fun deleteBoard(@PathVariable id: String) = boardService.deleteBoard(id)

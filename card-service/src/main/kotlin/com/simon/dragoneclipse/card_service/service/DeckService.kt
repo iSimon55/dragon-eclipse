@@ -3,8 +3,8 @@ package com.simon.dragoneclipse.card_service.service
 import com.simon.dragoneclipse.card_service.dto.CreateDeckRequest
 import com.simon.dragoneclipse.card_service.model.Deck
 import com.simon.dragoneclipse.card_service.repository.CardRepository
-import com.simon.dragoneclipse.card_service.repository.DeckRepository
 import com.simon.dragoneclipse.card_service.repository.MystlingRepository
+import com.simon.dragoneclipse.card_service.repository.deck.DeckRepository
 import org.springframework.stereotype.Service
 
 @Service
@@ -20,14 +20,14 @@ class DeckService(
             throw IllegalArgumentException("Invalid number of cards")
         }
 
-        val cards = cardRepository.findAllById(request.cardIds)
+        //val cards = cardRepository.findAllById(request.cardIds)
 
         val mystling = mystlingRepository.findById(request.mystlingName)
             .orElseThrow { IllegalArgumentException("Mystling not found") }
 
         val deck = Deck(
             name = request.name,
-            cards = cards,
+            cardIds = request.cardIds,
             mystling = mystling
         )
 
@@ -35,4 +35,6 @@ class DeckService(
     }
 
     fun deleteDeck(id: Long) = deckRepository.deleteById(id)
+
+    fun getDeckByName(name: String) = deckRepository.getDeckByName(name)
 }

@@ -2,7 +2,7 @@ package com.simon.dragoneclipse.game_service.model.Player
 
 data class Mystling(
     val name: String,
-    val type: MystlingTypeName,
+    val type: MystlingType,
 
     var hp: Int,
     var attack: Int,
@@ -10,8 +10,14 @@ data class Mystling(
     var defense: Int,
     var specialDefense: Int,
 
-    val specialAbilities: List<MystlingSpecialAbility>,
-    val subTypes: List<MystlingSubType>
+    var hpPvP: Int,
+    var attackPvP: Int,
+    var speedPvP: Int,
+    var defensePvP: Int,
+    var specialDefensePvP: Int,
+
+    val specialAbility: List<MystlingSpecialAbility>,
+    val subType: List<MystlingSubType>
 )
 
 data class MystlingSpecialAbility(
@@ -23,8 +29,13 @@ data class MystlingSpecialAbility(
 )
 
 data class  MystlingSubType(
-    val type: MystlingTypeName,
-    val tokens: Int
+    val id: MystlingSubTypeId,
+    val tokens: Int,
+    val cards: Int
+)
+data class MystlingSubTypeId(
+    val mystlingName: String,
+    val type: MystlingTypeName
 )
 
 enum class MystlingTypeName {
@@ -35,3 +46,13 @@ enum class MystlingTypeName {
     LIGHT,
     DARK
 }
+
+data class MystlingType(
+    val name: MystlingTypeName,
+
+    val skillName: String,
+
+    val cost: Int,
+
+    val effect: String
+)

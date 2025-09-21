@@ -1,17 +1,23 @@
 package com.simon.dragoneclipse.game_service.controller
 
+import com.simon.dragoneclipse.game_service.dto.CreateGameRequest
 import com.simon.dragoneclipse.game_service.model.InGame.Game
 import com.simon.dragoneclipse.game_service.service.GameService
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/games")
+@CrossOrigin(origins = arrayOf("*"))
 class GameController(
     private val gameService: GameService
 ) {
 
     @PostMapping
-    fun createGame(@RequestBody game: Game): Game = gameService.createGame(game)
+    @ResponseStatus(HttpStatus.CREATED)
+    suspend fun createGame(@RequestBody request: CreateGameRequest): Game {
+        return gameService.createGame(request)
+    }
 
     @GetMapping("/{id}")
     fun getGame(@PathVariable id: String): Game = gameService.getGameById(id)
